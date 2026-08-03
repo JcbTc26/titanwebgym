@@ -1,0 +1,531 @@
+/* =========================================================
+   TITAN FITNESS CLUB
+   RESPONSIVO.CSS
+   Solo media queries y ajustes de dispositivos
+========================================================= */
+
+/* =========================================================
+   MÓVILES MUY PEQUEÑOS
+========================================================= */
+
+@media screen and (max-width: 359px) {
+    .logoymenu {
+        width: calc(100% - 0.75rem);
+        padding-inline: 0.6rem;
+    }
+
+    .logo {
+        width: 48px;
+    }
+
+    .menu-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.9rem;
+    }
+
+    .contenedorTitulos {
+        padding-inline: 0.85rem;
+    }
+
+    .tituloWeb {
+        font-size: 1.75rem;
+    }
+
+    .botonInicio,
+    .botonApp {
+        width: 100%;
+    }
+
+    #formularioContactanos {
+        padding: 1rem;
+    }
+}
+
+/* =========================================================
+   MÓVILES GRANDES
+=========================================================== */
+
+@media screen and (min-width: 480px) {
+    #contenedorCaracteristicas,
+    #galeriaDeProductos,
+    #casosDeExito,
+    #contacto,
+    .bloqueDescargaApp {
+        padding-block: 4.5rem;
+        padding-inline: 1.25rem;
+    }
+
+    .bloqueCentral1,
+    .caja {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .fotoGaleria {
+        height: 300px;
+    }
+
+    #formularioContactanos {
+        padding: 1.5rem;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (min-width: 768px) {
+    #cabecera {
+        min-height: 75svh;
+    }
+
+    .logoymenu {
+        width: min(calc(100% - 3rem), var(--container-width));
+        padding-inline: 1.25rem;
+    }
+
+    .logo {
+        width: 70px;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    .navegacionSub {
+        width: auto;
+        margin-left: auto;
+
+        position: static;
+
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .menu1 {
+        width: auto;
+        padding: 0;
+        margin: 0;
+
+        flex-direction: row;
+        align-items: center;
+        gap: 0.1rem;
+
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .menu1 li {
+        width: auto;
+    }
+
+    .menu1 a {
+        width: auto;
+        padding: 0.7rem 0.55rem;
+
+        font-size: clamp(0.76rem, 1.2vw, 1rem);
+        text-align: center;
+    }
+
+    .menu1 a:hover {
+        color: #f87171;
+        background-color: rgb(255 255 255 / 8%);
+    }
+
+    .contenedorTitulos {
+        min-height: 65svh;
+        padding: 5rem 2rem 4rem;
+    }
+
+    .tituloWeb {
+        font-size: clamp(2.8rem, 6vw, 4.5rem);
+    }
+
+    .subtitulo {
+        width: min(72%, 720px);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+
+    #contenedorCaracteristicas,
+    #galeriaDeProductos,
+    #casosDeExito,
+    #contacto,
+    .bloqueDescargaApp {
+        padding-block: 5rem;
+        padding-inline: 1.5rem;
+    }
+
+    #bloqueCentralCaracteristicas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .bloqueCentral1 {
+        min-height: 290px;
+        padding: 2rem 1.5rem;
+    }
+
+    #contenedorGaleria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .fotoGaleria {
+        height: 320px;
+    }
+
+    #contenedorCajas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .caja {
+        min-height: 300px;
+        padding: 2rem 1.5rem;
+    }
+
+    #formularioContactanos {
+        padding: 2rem;
+    }
+
+    .formulariosInf {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .botonFormulario {
+        grid-column: 1 / -1;
+    }
+
+    .navegacionInf {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .separadorMenu1 {
+        width: 1px;
+        height: 18px;
+
+        display: block;
+
+        background-color: #4b5563;
+    }
+}
+
+/* =========================================================
+   ESCRITORIO
+========================================================= */
+
+@media screen and (min-width: 1024px) {
+    #cabecera {
+        min-height: 80svh;
+    }
+
+    .logoymenu {
+        position: sticky;
+        top: 1rem;
+    }
+
+    .menu1 {
+        gap: 0.35rem;
+    }
+
+    .menu1 a {
+        padding: 0.75rem 0.8rem;
+    }
+
+    .contenedorTitulos {
+        min-height: 70svh;
+    }
+
+    #bloqueCentralCaracteristicas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    #contenedorGaleria {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .fotoGaleria {
+        height: 330px;
+    }
+
+    #contenedorCajas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   ESCRITORIO GRANDE
+========================================================= */
+
+@media screen and (min-width: 1280px) {
+    #cabecera {
+        min-height: 90svh;
+    }
+
+    .contenedorTitulos {
+        min-height: 80svh;
+    }
+
+    .menu1 a {
+        padding-inline: 1rem;
+    }
+
+    .fotoGaleria {
+        height: 360px;
+    }
+}
+
+/* =========================================================
+   PANTALLAS MUY GRANDES
+========================================================= */
+
+@media screen and (min-width: 1536px) {
+    #cabecera {
+        min-height: 95svh;
+    }
+
+    .contenedorTitulos {
+        min-height: 85svh;
+    }
+
+    .tituloWeb {
+        max-width: 1050px;
+        font-size: 5rem;
+    }
+
+    .subtitulo {
+        max-width: 760px;
+        font-size: 1.35rem;
+    }
+}
+
+/* =========================================================
+   MÓVIL EN HORIZONTAL
+========================================================= */
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    #cabecera {
+        min-height: 100svh;
+    }
+
+    .contenedorTitulos {
+        min-height: auto;
+        padding-block: 2.5rem;
+        gap: 1rem;
+    }
+
+    .tituloWeb {
+        font-size: clamp(2rem, 6vw, 3.2rem);
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .botonInicio {
+        min-height: 44px;
+        padding-block: 0.7rem;
+    }
+}
+
+/* =========================================================
+   DISPOSITIVOS CON RATÓN
+========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+    .bloqueCentral1:hover {
+        transform: translateY(-6px);
+    }
+
+    .fotoGaleria:hover {
+        transform: translateY(-6px) scale(1.015);
+    }
+
+    .caja:hover {
+        transform: translateY(-6px);
+    }
+}
+
+/* =========================================================
+   IMPRESIÓN
+========================================================= */
+
+@media print {
+    .logoymenu,
+    .botonInicio,
+    .formularioApp,
+    #formularioContactanos {
+        display: none !important;
+    }
+
+    #cabecera {
+        min-height: auto;
+        color: #000000;
+        background: none;
+    }
+
+    .tituloWeb,
+    .subtitulo {
+        color: #000000;
+        text-shadow: none;
+    }
+
+    #casosDeExito,
+    .bloqueDescargaApp,
+    #pie {
+        color: #000000;
+        background: #ffffff;
+    }
+
+    .tituloCasoExito,
+    .tituloApp,
+    .textoCaso,
+    .nombre,
+    .textoApp,
+    .textoPie1,
+    .textoPie2 {
+        color: #000000;
+    }
+
+    .caja {
+        border: 1px solid #000000;
+        box-shadow: none;
+    }
+}
+/* =========================================================
+   RESPONSIVE DEL PLANIFICADOR
+========================================================= */
+
+@media screen and (min-width: 600px) {
+
+    .rejillaFormulario {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .opcionesLimitaciones,
+    .opcionesSeguridad {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .accionesFormularioPlan {
+        flex-direction: row;
+    }
+
+    .botonGenerarPlan,
+    .botonSecundarioPlan {
+        flex: 1;
+    }
+
+    .resumenUsuario {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cabeceraResultadoPlan {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    #planificador {
+        padding: 5rem 1.5rem;
+    }
+
+    .contenidoPlan {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ejercicioPlan {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+
+    .datosEjercicio {
+        max-width: 180px;
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .rejillaFormulario {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grupoFormularioCompleto {
+        grid-column: 1 / -1;
+    }
+
+    .opcionesLimitaciones {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .opcionesSeguridad {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resumenUsuario {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .contenidoPlan {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (min-width: 1400px) {
+
+    .contenidoPlan {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #resultadoPlan,
+    #resultadoPlan * {
+        visibility: visible;
+    }
+
+    #resultadoPlan {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        position: absolute;
+        inset: 0;
+
+        box-shadow: none;
+        border: 0;
+    }
+
+    .accionesResultado,
+    .avisoProfesional {
+        display: none;
+    }
+
+    .contenidoPlan {
+        display: block;
+    }
+
+    .diaEntrenamiento {
+        margin-bottom: 1rem;
+
+        break-inside: avoid;
+        box-shadow: none;
+    }
+}

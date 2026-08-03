@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- =====================================================
+         CONFIGURACIÓN GENERAL
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Descripción para buscadores -->
+    <meta
+        name="description"
+        content="Generador gratuito de planes de entrenamiento de Titan Fitness Club."
+    >
+
+    <!-- Título de la pestaña -->
+    <title>Planificador | Titan Fitness Club</title>
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        href="/img/favicon/logo TITAN.ico"
+        type="image/x-icon"
+    >
+
+    <!-- Estilos globales compartidos -->
+    <link rel="stylesheet" href="/css/generales.css">
+
+    <!-- Estilos exclusivos del planificador -->
+    <link rel="stylesheet" href="/css/planificador.css">
+
+</head>
+
+<body class="paginaPlanificador">
+
+    <!-- =====================================================
+         CABECERA DE LA APLICACIÓN
+    ====================================================== -->
+
+    <header class="cabeceraApp">
+
+        <div class="barraApp">
+
+            <!-- Logotipo y nombre -->
+            <a
+                href="index.html"
+                class="marcaApp"
+                aria-label="Volver a Titan Fitness Club"
+            >
+                <img
+                    src="/img/logo/logo TITAN.webp"
+                    alt="Logotipo de Titan Fitness Club"
+                    class="logoApp"
+                >
+
+                <span class="nombreMarcaApp">
+                    Titan Fitness Club
+                </span>
+            </a>
+
+            <!-- Navegación sencilla -->
+            <nav
+                class="navegacionApp"
+                aria-label="Navegación del planificador"
+            >
+                <a href="index.html">
+                    Volver a la web
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="contenidoApp">
+
+        <!-- =================================================
+             PRESENTACIÓN
+        ================================================== -->
+
+        <section
+            class="presentacionApp"
+            aria-labelledby="tituloPlanificador"
+        >
+
+            <span class="etiquetaApp">
+                Planificador gratuito
+            </span>
+
+            <h1 id="tituloPlanificador">
+                Crea tu plan de entrenamiento
+            </h1>
+
+            <p>
+                Completa tus datos y recibe una propuesta orientativa
+                adaptada a tu experiencia, objetivo, disponibilidad y
+                lugar de entrenamiento.
+            </p>
+
+        </section>
+
+        <!-- =================================================
+             CONTENEDOR PRINCIPAL DE LA APLICACIÓN
+        ================================================== -->
+
+        <section class="panelAplicacion">
+
+            <!-- =============================================
+                 FORMULARIO
+            ============================================== -->
+
+            <form id="formularioPlan" novalidate>
+
+                <!-- Encabezado del formulario -->
+                <div class="encabezadoFormulario">
+
+                    <div>
+                        <span class="numeroPaso">Paso 1</span>
+
+                        <h2>Datos personales y deportivos</h2>
+                    </div>
+
+                    <p>
+                        Los campos marcados con
+                        <strong>*</strong> son obligatorios.
+                    </p>
+
+                </div>
+
+                <!-- Contenedor de errores -->
+                <div
+                    id="erroresFormulario"
+                    class="erroresFormulario"
+                    role="alert"
+                    aria-live="assertive"
+                    hidden
+                ></div>
+
+                <!-- =========================================
+                     DATOS BÁSICOS
+                ========================================== -->
+
+                <fieldset class="bloqueFormulario">
+
+                    <legend>Datos básicos</legend>
+
+                    <div class="rejillaFormulario">
+
+                        <!-- Nombre -->
+                        <div class="grupoFormulario">
+
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Por ejemplo, Laura"
+                                minlength="2"
+                                maxlength="40"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+                        <!-- Edad -->
+                        <div class="grupoFormulario">
+
+                            <label for="edad">
+                                Edad
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="edad"
+                                name="edad"
+                                placeholder="35"
+                                min="18"
+                                max="80"
+                                inputmode="numeric"
+                                required
+                            >
+
+                            <small>
+                                Disponible para personas de 18 a 80 años.
+                            </small>
+
+                        </div>
+
+                        <!-- Peso -->
+                        <div class="grupoFormulario">
+
+                            <label for="peso">
+                                Peso en kilogramos
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="peso"
+                                name="peso"
+                                placeholder="75"
+                                min="35"
+                                max="250"
+                                step="0.1"
+                                inputmode="decimal"
+                                required
+                            >
+
+                        </div>
+
+                        <!-- Altura -->
+                        <div class="grupoFormulario">
+
+                            <label for="altura">
+                                Altura en centímetros
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="altura"
+                                name="altura"
+                                placeholder="175"
+                                min="130"
+                                max="230"
+                                inputmode="numeric"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <!-- =========================================
+                     PERFIL DE ENTRENAMIENTO
+                ========================================== -->
+
+                <fieldset class="bloqueFormulario">
+
+                    <legend>Perfil de entrenamiento</legend>
+
+                    <div class="rejillaFormulario">
+
+                        <!-- Actividad habitual -->
+                        <div class="grupoFormulario">
+
+                            <label for="actividad">
+                                Actividad habitual
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="actividad"
+                                name="actividad"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="sedentaria">
+                                    Muy poca actividad
+                                </option>
+
+                                <option value="ligera">
+                                    Actividad ligera
+                                </option>
+
+                                <option value="moderada">
+                                    Actividad moderada
+                                </option>
+
+                                <option value="alta">
+                                    Actividad frecuente
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <!-- Experiencia -->
+                        <div class="grupoFormulario">
+
+                            <label for="experiencia">
+                                Experiencia
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="experiencia"
+                                name="experiencia"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="principiante">
+                                    Principiante
+                                </option>
+
+                                <option value="intermedio">
+                                    Intermedio
+                                </option>
+
+                                <option value="avanzado">
+                                    Avanzado
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <!-- Objetivo -->
+                        <div class="grupoFormulario">
+
+                            <label for="objetivo">
+                                Objetivo principal
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="objetivo"
+                                name="objetivo"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="salud">
+                                    Mejorar mi salud general
+                                </option>
+
+                                <option value="perder-grasa">
+                                    Perder grasa
+                                </option>
+
+                                <option value="ganar-fuerza">
+                                    Ganar fuerza
+                                </option>
+
+                                <option value="masa-muscular">
+                                    Ganar masa muscular
+                                </option>
+
+                                <option value="resistencia">
+                                    Mejorar resistencia
+                                </option>
+
+                                <option value="movilidad">
+                                    Mejorar movilidad
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <!-- Días -->
+                        <div class="grupoFormulario">
+
+                            <label for="dias">
+                                Días por semana
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select id="dias" name="dias" required>
+
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="2">2 días</option>
+                                <option value="3">3 días</option>
+                                <option value="4">4 días</option>
+                                <option value="5">5 días</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Duración -->
+                        <div class="grupoFormulario">
+
+                            <label for="duracion">
+                                Duración de cada sesión
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="duracion"
+                                name="duracion"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="30">30 minutos</option>
+                                <option value="45">45 minutos</option>
+                                <option value="60">60 minutos</option>
+                                <option value="75">75 minutos</option>
+                            </select>
+
+                        </div>
+
+                        <!-- Lugar -->
+                        <div class="grupoFormulario">
+
+                            <label for="lugar">
+                                Lugar de entrenamiento
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="lugar"
+                                name="lugar"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona una opción
+                                </option>
+
+                                <option value="casa">
+                                    Casa sin material
+                                </option>
+
+                                <option value="casa-material">
+                                    Casa con mancuernas o bandas
+                                </option>
+
+                                <option value="gimnasio">
+                                    Gimnasio
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <!-- =========================================
+                     LIMITACIONES
+                ========================================== -->
+
+                <fieldset class="bloqueFormulario">
+
+                    <legend>Molestias o limitaciones</legend>
+
+                    <p class="descripcionBloque">
+                        Selecciona las zonas que requieran especial
+                        precaución.
+                    </p>
+
+                    <div class="rejillaOpciones">
+
+                        <label class="opcionSeleccionable">
+                            <input
+                                type="checkbox"
+                                name="limitaciones"
+                                value="rodilla"
+                            >
+                            <span>Rodilla</span>
+                        </label>
+
+                        <label class="opcionSeleccionable">
+                            <input
+                                type="checkbox"
+                                name="limitaciones"
+                                value="espalda"
+                            >
+                            <span>Espalda</span>
+                        </label>
+
+                        <label class="opcionSeleccionable">
+                            <input
+                                type="checkbox"
+                                name="limitaciones"
+                                value="hombro"
+                            >
+                            <span>Hombro</span>
+                        </label>
+
+                        <label class="opcionSeleccionable">
+                            <input
+                                type="checkbox"
+                                name="limitaciones"
+                                value="movilidad"
+                            >
+                            <span>Movilidad reducida</span>
+                        </label>
+
+                        <label class="opcionSeleccionable">
+                            <input
+                                type="checkbox"
+                                name="limitaciones"
+                                value="ninguna"
+                                id="sinLimitaciones"
+                            >
+                            <span>Ninguna</span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+                <!-- =========================================
+                     COMPROBACIÓN DE SEGURIDAD
+                ========================================== -->
+
+                <fieldset class="bloqueFormulario bloqueSeguridad">
+
+                    <legend>Comprobación de seguridad</legend>
+
+                    <p class="descripcionBloque">
+                        Marca cualquier situación que sea aplicable
+                        actualmente.
+                    </p>
+
+                    <div class="rejillaSeguridad">
+
+                        <label class="opcionSeguridad">
+                            <input
+                                type="checkbox"
+                                name="alertas"
+                                value="dolor-pecho"
+                            >
+
+                            <span>
+                                Dolor en el pecho durante la actividad.
+                            </span>
+                        </label>
+
+                        <label class="opcionSeguridad">
+                            <input
+                                type="checkbox"
+                                name="alertas"
+                                value="mareos"
+                            >
+
+                            <span>
+                                Mareos, desmayos o falta de aire inusual.
+                            </span>
+                        </label>
+
+                        <label class="opcionSeguridad">
+                            <input
+                                type="checkbox"
+                                name="alertas"
+                                value="lesion-reciente"
+                            >
+
+                            <span>
+                                Lesión, operación o dolor intenso reciente.
+                            </span>
+                        </label>
+
+                        <label class="opcionSeguridad">
+                            <input
+                                type="checkbox"
+                                name="alertas"
+                                value="condicion-medica"
+                            >
+
+                            <span>
+                                Enfermedad cardiovascular o indicación
+                                médica de limitar el ejercicio.
+                            </span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+                <!-- =========================================
+                     ACEPTACIÓN DEL AVISO
+                ========================================== -->
+
+                <label class="aceptacionAviso">
+
+                    <input
+                        type="checkbox"
+                        id="aceptarAviso"
+                        required
+                    >
+
+                    <span>
+                        Entiendo que el resultado es orientativo y no
+                        sustituye una valoración médica, fisioterapéutica
+                        o de un profesional del ejercicio.
+                    </span>
+
+                </label>
+
+                <!-- =========================================
+                     BOTONES DEL FORMULARIO
+                ========================================== -->
+
+                <div class="accionesFormulario">
+
+                    <button
+                        type="submit"
+                        class="botonPrincipal"
+                    >
+                        Generar mi plan
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="botonSecundario"
+                        id="botonLimpiar"
+                    >
+                        Limpiar formulario
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- =============================================
+                 RESULTADO GENERADO
+            ============================================== -->
+
+            <section
+                id="resultadoPlan"
+                class="resultadoPlan"
+                aria-labelledby="tituloResultado"
+                aria-live="polite"
+                hidden
+            >
+
+                <!-- Cabecera del resultado -->
+                <header class="cabeceraResultado">
+
+                    <div>
+                        <span class="numeroPaso">Paso 2</span>
+
+                        <h2 id="tituloResultado">
+                            Tu rutina semanal
+                        </h2>
+                    </div>
+
+                    <!-- Acciones del plan -->
+                    <div class="accionesResultado">
+
+                        <button
+                            type="button"
+                            id="botonImprimir"
+                            class="botonAccion"
+                        >
+                            Imprimir
+                        </button>
+
+                        <button
+                            type="button"
+                            id="botonEliminar"
+                            class="botonAccion botonPeligro"
+                        >
+                            Eliminar
+                        </button>
+
+                    </div>
+
+                </header>
+
+                <!-- Resumen de los datos del usuario -->
+                <div
+                    id="resumenUsuario"
+                    class="resumenUsuario"
+                ></div>
+
+                <!-- Mensajes y recomendaciones -->
+                <div
+                    id="avisoResultado"
+                    class="avisoResultado"
+                ></div>
+
+                <!-- Rutina dividida por días -->
+                <div
+                    id="contenidoPlan"
+                    class="contenidoPlan"
+                ></div>
+
+                <!-- Aviso fijo de seguridad -->
+                <aside class="avisoProfesional">
+
+                    <h3>Importante</h3>
+
+                    <p>
+                        Detén el ejercicio si aparece dolor intenso,
+                        mareo, presión en el pecho, desmayo o dificultad
+                        respiratoria inusual.
+                    </p>
+
+                </aside>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ====================================================== -->
+
+    <footer class="pieApp">
+
+        <p>
+            © 2026 Titan Fitness Club. Plan orientativo.
+        </p>
+
+        <a href="index.html">
+            Volver a la página principal
+        </a>
+
+    </footer>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="/js/planificador.js" defer></script>
+
+</body>
+
+</html>

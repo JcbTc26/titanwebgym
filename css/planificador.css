@@ -1,0 +1,995 @@
+/* =========================================================
+   TITAN FITNESS CLUB
+   PLANIFICADOR.CSS
+
+   Este archivo contiene únicamente los estilos de la
+   aplicación planificador.html.
+========================================================= */
+
+/* =========================================================
+   VARIABLES ESPECÍFICAS
+========================================================= */
+
+:root {
+    --app-rojo: #dc2626;
+    --app-rojo-oscuro: #991b1b;
+    --app-rojo-claro: #fee2e2;
+
+    --app-negro: #0b0f19;
+    --app-negro-suave: #111827;
+    --app-gris-oscuro: #1f2937;
+
+    --app-texto: #111827;
+    --app-texto-secundario: #4b5563;
+    --app-texto-claro: #e5e7eb;
+
+    --app-blanco: #ffffff;
+    --app-fondo: #f1f5f9;
+    --app-superficie: #ffffff;
+
+    --app-borde: #d1d5db;
+    --app-borde-suave: #e5e7eb;
+
+    --app-radio: 16px;
+    --app-radio-pequeno: 10px;
+
+    --app-sombra:
+        0 16px 40px rgb(15 23 42 / 12%);
+
+    --app-ancho: 1200px;
+}
+
+/* =========================================================
+   PÁGINA GENERAL
+========================================================= */
+
+.paginaPlanificador {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--app-texto);
+    background:
+        linear-gradient(
+            180deg,
+            #e2e8f0 0%,
+            var(--app-fondo) 35%,
+            #ffffff 100%
+        );
+}
+
+/* =========================================================
+   CABECERA
+========================================================= */
+
+.cabeceraApp {
+    width: 100%;
+    padding: 0.8rem 1rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background-color: rgb(11 15 25 / 94%);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+
+    backdrop-filter: blur(14px);
+}
+
+.barraApp {
+    width: min(100%, var(--app-ancho));
+    margin-inline: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* =========================================================
+   MARCA
+========================================================= */
+
+.marcaApp {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    color: var(--app-blanco);
+}
+
+.logoApp {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.nombreMarcaApp {
+    display: none;
+
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+.navegacionApp a {
+    padding: 0.65rem 0.9rem;
+
+    display: inline-flex;
+
+    color: var(--app-texto-claro);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    border: 1px solid #374151;
+    border-radius: 8px;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+}
+
+.navegacionApp a:hover {
+    color: var(--app-blanco);
+    background-color: var(--app-rojo);
+    border-color: var(--app-rojo);
+}
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.contenidoApp {
+    width: 100%;
+    flex: 1;
+    padding: 3rem 1rem 5rem;
+}
+
+/* =========================================================
+   PRESENTACIÓN
+========================================================= */
+
+.presentacionApp {
+    width: min(100%, 850px);
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+.etiquetaApp,
+.numeroPaso {
+    width: fit-content;
+    padding: 0.4rem 0.75rem;
+
+    display: inline-flex;
+
+    color: var(--app-rojo-oscuro);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    background-color: var(--app-rojo-claro);
+    border: 1px solid #fecaca;
+    border-radius: 999px;
+}
+
+.presentacionApp h1 {
+    margin-top: 1rem;
+
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 900;
+    line-height: 1.05;
+
+    text-wrap: balance;
+}
+
+.presentacionApp p {
+    width: min(100%, 720px);
+    margin: 1.25rem auto 0;
+
+    color: var(--app-texto-secundario);
+
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+
+    text-wrap: pretty;
+}
+
+/* =========================================================
+   PANEL PRINCIPAL
+========================================================= */
+
+.panelAplicacion {
+    width: min(100%, var(--app-ancho));
+    margin: 3rem auto 0;
+}
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+#formularioPlan {
+    width: 100%;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+
+    background-color: var(--app-superficie);
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio);
+
+    box-shadow: var(--app-sombra);
+}
+
+/* =========================================================
+   ENCABEZADO DEL FORMULARIO
+========================================================= */
+
+.encabezadoFormulario {
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.encabezadoFormulario h2 {
+    margin-top: 0.7rem;
+
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 900;
+}
+
+.encabezadoFormulario p {
+    color: var(--app-texto-secundario);
+    line-height: 1.6;
+}
+
+/* =========================================================
+   MENSAJES DE ERROR
+========================================================= */
+
+.erroresFormulario {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+
+    color: #7f1d1d;
+
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--app-radio-pequeno);
+}
+
+.erroresFormulario strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.erroresFormulario ul {
+    padding-left: 1.25rem;
+    list-style: disc;
+}
+
+.erroresFormulario li + li {
+    margin-top: 0.3rem;
+}
+
+/* =========================================================
+   BLOQUES DEL FORMULARIO
+========================================================= */
+
+.bloqueFormulario {
+    min-width: 0;
+    padding: 1.25rem;
+
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio-pequeno);
+}
+
+.bloqueFormulario + .bloqueFormulario {
+    margin-top: 1.5rem;
+}
+
+.bloqueFormulario legend {
+    padding-inline: 0.4rem;
+
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+
+.descripcionBloque {
+    margin-bottom: 1rem;
+
+    color: var(--app-texto-secundario);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.bloqueSeguridad {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+}
+
+/* =========================================================
+   REJILLA DE CAMPOS
+========================================================= */
+
+.rejillaFormulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.grupoFormulario {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.grupoFormulario label {
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.grupoFormulario label span {
+    color: var(--app-rojo);
+}
+
+.grupoFormulario small {
+    color: var(--app-texto-secundario);
+
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   INPUTS Y SELECTS
+========================================================= */
+
+.grupoFormulario input,
+.grupoFormulario select {
+    width: 100%;
+    min-height: 50px;
+    padding: 0.85rem 1rem;
+
+    color: var(--app-texto);
+
+    background-color: #f8fafc;
+    border: 1px solid var(--app-borde);
+    border-radius: var(--app-radio-pequeno);
+
+    outline: none;
+
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background-color 180ms ease;
+}
+
+.grupoFormulario input:focus,
+.grupoFormulario select:focus {
+    background-color: var(--app-blanco);
+    border-color: var(--app-rojo);
+    box-shadow: 0 0 0 4px rgb(220 38 38 / 12%);
+}
+
+.grupoFormulario input[aria-invalid="true"],
+.grupoFormulario select[aria-invalid="true"] {
+    background-color: #fef2f2;
+    border-color: var(--app-rojo);
+}
+
+/* =========================================================
+   OPCIONES Y CHECKBOXES
+========================================================= */
+
+.rejillaOpciones,
+.rejillaSeguridad {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.opcionSeleccionable,
+.opcionSeguridad {
+    min-height: 48px;
+    padding: 0.8rem;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+
+    cursor: pointer;
+
+    background-color: #f8fafc;
+    border: 1px solid var(--app-borde-suave);
+    border-radius: 9px;
+
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease;
+}
+
+.opcionSeguridad {
+    background-color: var(--app-blanco);
+    border-color: #fde68a;
+}
+
+.opcionSeleccionable:hover,
+.opcionSeguridad:hover {
+    background-color: #fff7f7;
+    border-color: #fca5a5;
+}
+
+.opcionSeleccionable input,
+.opcionSeguridad input {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+
+    flex-shrink: 0;
+    accent-color: var(--app-rojo);
+}
+
+.opcionSeleccionable span,
+.opcionSeguridad span {
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+/* =========================================================
+   AVISO DE ACEPTACIÓN
+========================================================= */
+
+.aceptacionAviso {
+    margin-top: 1.5rem;
+    padding: 1rem;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    cursor: pointer;
+
+    color: var(--app-texto-secundario);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    background-color: #f8fafc;
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio-pequeno);
+}
+
+.aceptacionAviso input {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+
+    flex-shrink: 0;
+    accent-color: var(--app-rojo);
+}
+
+/* =========================================================
+   BOTONES DEL FORMULARIO
+========================================================= */
+
+.accionesFormulario {
+    margin-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.botonPrincipal,
+.botonSecundario {
+    min-height: 52px;
+    padding: 0.9rem 1.5rem;
+
+    font-weight: 900;
+
+    border-radius: var(--app-radio-pequeno);
+
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        background-color 220ms ease;
+}
+
+.botonPrincipal {
+    color: var(--app-blanco);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--app-rojo),
+            var(--app-rojo-oscuro)
+        );
+
+    box-shadow: 0 12px 25px rgb(220 38 38 / 28%);
+}
+
+.botonPrincipal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgb(220 38 38 / 38%);
+}
+
+.botonSecundario {
+    color: var(--app-texto);
+
+    background-color: #e5e7eb;
+    border: 1px solid var(--app-borde);
+}
+
+.botonSecundario:hover {
+    background-color: #d1d5db;
+}
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+
+.resultadoPlan {
+    width: 100%;
+    margin-top: 3rem;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+
+    background-color: var(--app-blanco);
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio);
+
+    box-shadow: var(--app-sombra);
+}
+
+.resultadoPlan[hidden] {
+    display: none;
+}
+
+/* =========================================================
+   CABECERA DEL RESULTADO
+========================================================= */
+
+.cabeceraResultado {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cabeceraResultado h2 {
+    margin-top: 0.7rem;
+
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    font-weight: 900;
+}
+
+.accionesResultado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.botonAccion {
+    min-height: 42px;
+    padding: 0.65rem 1rem;
+
+    color: var(--app-texto);
+
+    font-weight: 800;
+
+    background-color: #f3f4f6;
+    border: 1px solid var(--app-borde);
+    border-radius: 8px;
+}
+
+.botonAccion:hover {
+    background-color: #e5e7eb;
+}
+
+.botonPeligro {
+    color: #991b1b;
+    background-color: #fef2f2;
+    border-color: #fecaca;
+}
+
+/* =========================================================
+   RESUMEN DEL USUARIO
+========================================================= */
+
+.resumenUsuario {
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.datoResumen {
+    padding: 1rem;
+
+    background-color: #f8fafc;
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio-pequeno);
+}
+
+.datoResumen strong {
+    display: block;
+
+    color: var(--app-texto-secundario);
+
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.datoResumen span {
+    display: block;
+    margin-top: 0.3rem;
+
+    font-weight: 900;
+}
+
+/* =========================================================
+   AVISO DEL RESULTADO
+========================================================= */
+
+.avisoResultado {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+
+    color: #1e3a8a;
+
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--app-radio-pequeno);
+}
+
+.avisoResultado p {
+    line-height: 1.6;
+}
+
+.avisoResultado p + p {
+    margin-top: 0.6rem;
+}
+
+/* =========================================================
+   TARJETAS DE LOS DÍAS
+========================================================= */
+
+.contenidoPlan {
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.diaEntrenamiento {
+    min-width: 0;
+    overflow: hidden;
+
+    background-color: var(--app-blanco);
+    border: 1px solid var(--app-borde-suave);
+    border-radius: var(--app-radio);
+
+    box-shadow: 0 8px 24px rgb(15 23 42 / 8%);
+}
+
+.cabeceraDia {
+    padding: 1.25rem;
+
+    color: var(--app-blanco);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--app-negro-suave),
+            var(--app-gris-oscuro)
+        );
+}
+
+.cabeceraDia span {
+    color: #fca5a5;
+
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.cabeceraDia h3 {
+    margin-top: 0.35rem;
+
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.cabeceraDia p {
+    margin-top: 0.4rem;
+
+    color: #d1d5db;
+
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   EJERCICIOS
+========================================================= */
+
+.listaEjercicios {
+    padding: 1.25rem;
+}
+
+.ejercicioPlan {
+    padding-block: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+
+    border-bottom: 1px solid var(--app-borde-suave);
+}
+
+.ejercicioPlan:first-child {
+    padding-top: 0;
+}
+
+.ejercicioPlan:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.informacionEjercicio h4 {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.informacionEjercicio p {
+    margin-top: 0.35rem;
+
+    color: var(--app-texto-secundario);
+
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.datosEjercicio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.datoEjercicio {
+    padding: 0.35rem 0.55rem;
+
+    color: #7f1d1d;
+
+    font-size: 0.74rem;
+    font-weight: 800;
+
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 999px;
+}
+
+/* =========================================================
+   AVISO PROFESIONAL
+========================================================= */
+
+.avisoProfesional {
+    margin-top: 2rem;
+    padding: 1.25rem;
+
+    color: #78350f;
+
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: var(--app-radio-pequeno);
+}
+
+.avisoProfesional h3 {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.avisoProfesional p {
+    margin-top: 0.4rem;
+
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.pieApp {
+    width: 100%;
+    padding: 2rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+
+    color: #9ca3af;
+
+    font-size: 0.9rem;
+    text-align: center;
+
+    background-color: var(--app-negro);
+}
+
+.pieApp a {
+    color: #fca5a5;
+    font-weight: 800;
+}
+
+.pieApp a:hover {
+    color: var(--app-blanco);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media screen and (min-width: 600px) {
+
+    .nombreMarcaApp {
+        display: inline;
+    }
+
+    .rejillaFormulario {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rejillaOpciones,
+    .rejillaSeguridad {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .accionesFormulario {
+        flex-direction: row;
+    }
+
+    .botonPrincipal,
+    .botonSecundario {
+        flex: 1;
+    }
+
+    .cabeceraResultado {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .resumenUsuario {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   TABLET GRANDE Y ESCRITORIO
+========================================================= */
+
+@media screen and (min-width: 900px) {
+
+    .contenidoApp {
+        padding-inline: 1.5rem;
+    }
+
+    .rejillaFormulario {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .rejillaOpciones {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .contenidoPlan {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resumenUsuario {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .ejercicioPlan {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+
+    .datosEjercicio {
+        max-width: 190px;
+        justify-content: flex-end;
+    }
+}
+
+/* =========================================================
+   PANTALLAS GRANDES
+========================================================= */
+
+@media screen and (min-width: 1400px) {
+
+    .contenidoPlan {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   IMPRESIÓN
+========================================================= */
+
+@media print {
+
+    /* Oculta todo el contenido */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Hace visible únicamente el resultado */
+    #resultadoPlan,
+    #resultadoPlan * {
+        visibility: visible;
+    }
+
+    #resultadoPlan {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        position: absolute;
+        inset: 0;
+
+        border: 0;
+        box-shadow: none;
+    }
+
+    /* Oculta botones y advertencias en la impresión */
+    .accionesResultado,
+    .avisoProfesional {
+        display: none;
+    }
+
+    /* Imprime cada día debajo del anterior */
+    .contenidoPlan {
+        display: block;
+    }
+
+    .diaEntrenamiento {
+        margin-bottom: 1rem;
+
+        break-inside: avoid;
+        box-shadow: none;
+    }
+}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
