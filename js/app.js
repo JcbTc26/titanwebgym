@@ -49,6 +49,15 @@ function iniciarFormularioContacto() {
                 }
             );
 
+            const tipoContenido =
+                respuesta.headers.get("content-type") || "";
+
+            if (!tipoContenido.includes("application/json")) {
+                throw new Error(
+                    "La respuesta del servidor no es válida."
+                );
+            }
+
             const resultado = await respuesta.json();
 
             if (!respuesta.ok || !resultado.success) {

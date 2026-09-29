@@ -32,9 +32,13 @@
         font-size: 1.75rem;
     }
 
-    .botonInicio,
+    .botonInicio {
+        width: 100%;
+    }
+
     .botonApp {
         width: 100%;
+        justify-content: center;
     }
 
     #formularioContactanos {
@@ -257,52 +261,6 @@
 
     #contenedorCajas {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-/* =========================================================
-   ESCRITORIO GRANDE
-========================================================= */
-
-@media screen and (min-width: 1280px) {
-    #cabecera {
-        min-height: 90svh;
-    }
-
-    .contenedorTitulos {
-        min-height: 80svh;
-    }
-
-    .menu1 a {
-        padding-inline: 1rem;
-    }
-
-    .fotoGaleria {
-        height: 360px;
-    }
-}
-
-/* =========================================================
-   PANTALLAS MUY GRANDES
-========================================================= */
-
-@media screen and (min-width: 1536px) {
-    #cabecera {
-        min-height: 95svh;
-    }
-
-    .contenedorTitulos {
-        min-height: 85svh;
-    }
-
-    .tituloWeb {
-        max-width: 1050px;
-        font-size: 5rem;
-    }
-
-    .subtitulo {
-        max-width: 760px;
-        font-size: 1.35rem;
     }
 }
 

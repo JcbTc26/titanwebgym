@@ -13,6 +13,99 @@
    6. Guarda el último plan en localStorage.
 ========================================================= */
 
+const utilidadesPlanificador = {
+    limpiarTexto(valor) {
+        return String(valor || "")
+            .trim()
+            .replace(/\s+/g, " ");
+    },
+
+    capitalizar(texto) {
+        if (!texto) {
+            return "";
+        }
+
+        return (
+            texto.charAt(0).toUpperCase() +
+            texto.slice(1)
+        );
+    },
+
+    formatearLista(elementos) {
+        if (elementos.length === 0) {
+            return "";
+        }
+
+        if (elementos.length === 1) {
+            return elementos[0];
+        }
+
+        return (
+            elementos.slice(0, -1).join(", ") +
+            " y " +
+            elementos[elementos.length - 1]
+        );
+    },
+
+    escaparHTML(valor) {
+        return String(valor)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    },
+
+    contienePalabras(texto, palabras) {
+        const textoNormalizado = texto.toLowerCase();
+
+        return palabras.some((palabra) =>
+            textoNormalizado.includes(
+                palabra.toLowerCase()
+            )
+        );
+    },
+
+    obtenerNombreObjetivo(objetivo) {
+        const objetivos = {
+            salud: "Salud general",
+            "perder-grasa": "Perder grasa",
+            "ganar-fuerza": "Ganar fuerza",
+            "masa-muscular": "Masa muscular",
+            resistencia: "Resistencia",
+            movilidad: "Movilidad"
+        };
+
+        return objetivos[objetivo] || objetivo;
+    },
+
+    obtenerNombreLugar(lugar) {
+        const lugares = {
+            casa: "Casa sin material",
+            "casa-material": "Casa con material",
+            gimnasio: "Gimnasio"
+        };
+
+        return lugares[lugar] || lugar;
+    },
+
+    crearDatoResumen(titulo, valor) {
+        return `
+            <div class="datoResumen">
+
+                <strong>
+                    ${utilidadesPlanificador.escaparHTML(titulo)}
+                </strong>
+
+                <span>
+                    ${utilidadesPlanificador.escaparHTML(valor)}
+                </span>
+
+            </div>
+        `;
+    }
+};
+
 document.addEventListener("DOMContentLoaded", iniciarPlanificador);
 
 /* =========================================================
@@ -196,8 +289,9 @@ function iniciarPlanificador() {
 
         return {
             nombre:
-                limpiarTexto(datosFormulario.get("nombre")) ||
-                "Deportista",
+                utilidadesPlanificador.limpiarTexto(
+                    datosFormulario.get("nombre")
+                ) || "Deportista",
 
             edad: Number(datosFormulario.get("edad")),
 
@@ -326,7 +420,7 @@ function iniciarPlanificador() {
                 ${errores
                     .map(
                         (error) =>
-                            `<li>${escaparHTML(error)}</li>`
+                            `<li>${utilidadesPlanificador.escaparHTML(error)}</li>`
                     )
                     .join("")}
             </ul>
@@ -371,9 +465,9 @@ function iniciarPlanificador() {
         resultadoPlan.hidden = false;
 
         resumenUsuario.innerHTML = `
-            ${crearDatoResumen("Usuario", datos.nombre)}
+            ${utilidadesPlanificador.crearDatoResumen("Usuario", datos.nombre)}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Estado",
                 "Valoración profesional recomendada"
             )}
@@ -387,7 +481,9 @@ function iniciarPlanificador() {
             </p>
 
             <p>
-                Has indicado ${escaparHTML(formatearLista(alertas))}.
+                Has indicado ${utilidadesPlanificador.escaparHTML(
+                    utilidadesPlanificador.formatearLista(alertas)
+                )}.
                 Consulta con un profesional sanitario o del ejercicio
                 antes de comenzar o modificar un entrenamiento.
             </p>
@@ -1219,7 +1315,7 @@ function iniciarPlanificador() {
         /* Sustitución por molestias de rodilla */
         if (
             datos.limitaciones.includes("rodilla") &&
-            contienePalabras(adaptado.nombre, [
+            utilidadesPlanificador.contienePalabras(adaptado.nombre, [
                 "zancada",
                 "step-up"
             ])
@@ -1238,7 +1334,7 @@ function iniciarPlanificador() {
         /* Sustitución por molestias de espalda */
         if (
             datos.limitaciones.includes("espalda") &&
-            contienePalabras(adaptado.nombre, [
+            utilidadesPlanificador.contienePalabras(adaptado.nombre, [
                 "peso muerto",
                 "bisagra"
             ])
@@ -1257,7 +1353,7 @@ function iniciarPlanificador() {
         /* Sustitución por molestias de hombro */
         if (
             datos.limitaciones.includes("hombro") &&
-            contienePalabras(adaptado.nombre, [
+            utilidadesPlanificador.contienePalabras(adaptado.nombre, [
                 "press de hombros",
                 "elevación de brazos"
             ])
@@ -1338,44 +1434,44 @@ function iniciarPlanificador() {
         const datos = plan.usuario;
 
         resumenUsuario.innerHTML = `
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Usuario",
                 datos.nombre
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Plan",
                 `${datos.dias} días · ${datos.duracion} minutos`
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Objetivo",
-                obtenerNombreObjetivo(datos.objetivo)
+                utilidadesPlanificador.obtenerNombreObjetivo(datos.objetivo)
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Nivel",
-                capitalizar(datos.experiencia)
+                utilidadesPlanificador.capitalizar(datos.experiencia)
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Lugar",
-                obtenerNombreLugar(datos.lugar)
+                utilidadesPlanificador.obtenerNombreLugar(datos.lugar)
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Intensidad",
                 plan.configuracion.intensidad
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "IMC orientativo",
                 String(plan.imc)
             )}
 
-            ${crearDatoResumen(
+            ${utilidadesPlanificador.crearDatoResumen(
                 "Actividad",
-                capitalizar(datos.actividad)
+                utilidadesPlanificador.capitalizar(datos.actividad)
             )}
         `;
 
@@ -1401,10 +1497,10 @@ function iniciarPlanificador() {
 
                     <span>Día ${sesion.numero}</span>
 
-                    <h3>${escaparHTML(sesion.titulo)}</h3>
+                    <h3>${utilidadesPlanificador.escaparHTML(sesion.titulo)}</h3>
 
                     <p>
-                        ${escaparHTML(sesion.descripcion)}
+                        ${utilidadesPlanificador.escaparHTML(sesion.descripcion)}
                     </p>
 
                 </header>
@@ -1454,11 +1550,11 @@ function iniciarPlanificador() {
                 <div class="informacionEjercicio">
 
                     <h4>
-                        ${escaparHTML(ejercicio.nombre)}
+                        ${utilidadesPlanificador.escaparHTML(ejercicio.nombre)}
                     </h4>
 
                     <p>
-                        ${escaparHTML(ejercicio.descripcion)}
+                        ${utilidadesPlanificador.escaparHTML(ejercicio.descripcion)}
                     </p>
 
                 </div>
@@ -1469,7 +1565,7 @@ function iniciarPlanificador() {
                         .map(
                             (dato) => `
                                 <span class="datoEjercicio">
-                                    ${escaparHTML(dato)}
+                                    ${utilidadesPlanificador.escaparHTML(dato)}
                                 </span>
                             `
                         )
@@ -1519,7 +1615,7 @@ function iniciarPlanificador() {
         return mensajes
             .map(
                 (mensaje) =>
-                    `<p>${escaparHTML(mensaje)}</p>`
+                    `<p>${utilidadesPlanificador.escaparHTML(mensaje)}</p>`
             )
             .join("");
 
@@ -1608,115 +1704,9 @@ function iniciarPlanificador() {
        FUNCIONES AUXILIARES
     ====================================================== */
 
-    function crearDatoResumen(titulo, valor) {
-
-        return `
-            <div class="datoResumen">
-
-                <strong>
-                    ${escaparHTML(titulo)}
-                </strong>
-
-                <span>
-                    ${escaparHTML(valor)}
-                </span>
-
-            </div>
-        `;
-
-    }
-
-    function obtenerNombreObjetivo(objetivo) {
-
-        const objetivos = {
-            salud: "Salud general",
-            "perder-grasa": "Perder grasa",
-            "ganar-fuerza": "Ganar fuerza",
-            "masa-muscular": "Masa muscular",
-            resistencia: "Resistencia",
-            movilidad: "Movilidad"
-        };
-
-        return objetivos[objetivo] || objetivo;
-
-    }
-
-    function obtenerNombreLugar(lugar) {
-
-        const lugares = {
-            casa: "Casa sin material",
-            "casa-material": "Casa con material",
-            gimnasio: "Gimnasio"
-        };
-
-        return lugares[lugar] || lugar;
-
-    }
-
-    function contienePalabras(texto, palabras) {
-
-        const textoNormalizado = texto.toLowerCase();
-
-        return palabras.some((palabra) =>
-            textoNormalizado.includes(
-                palabra.toLowerCase()
-            )
-        );
-
-    }
-
-    function limpiarTexto(valor) {
-
-        return String(valor || "")
-            .trim()
-            .replace(/\s+/g, " ");
-
-    }
-
-    function capitalizar(texto) {
-
-        if (!texto) {
-            return "";
-        }
-
-        return (
-            texto.charAt(0).toUpperCase() +
-            texto.slice(1)
-        );
-
-    }
-
-    function formatearLista(elementos) {
-
-        if (elementos.length === 0) {
-            return "";
-        }
-
-        if (elementos.length === 1) {
-            return elementos[0];
-        }
-
-        return (
-            elementos.slice(0, -1).join(", ") +
-            " y " +
-            elementos[elementos.length - 1]
-        );
-
-    }
-
     /*
-     * Evita insertar directamente contenido del usuario
-     * como HTML sin escapar.
+     * Utilidades compartidas: se mantienen aquí para
+     * priorizar claridad y evitar duplicación de lógica.
      */
-    function escaparHTML(valor) {
-
-        return String(valor)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-
-    }
 
 }
