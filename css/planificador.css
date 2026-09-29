@@ -993,3 +993,157 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ==================================================
+   EJERCICIOS DEL PLAN
+   ================================================== */
+
+.ejercicioPlan {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    grid-template-areas:
+        "imagen informacion"
+        "imagen datos";
+
+    column-gap: 16px;
+    row-gap: 10px;
+
+    width: 100%;
+    padding: 18px 0;
+
+    border-bottom: 1px solid #e3e6ea;
+
+    box-sizing: border-box;
+}
+
+/* Imagen */
+
+.imagenEjercicio {
+    grid-area: imagen;
+
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: start;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+    background-color: #111827;
+}
+
+.imagenEjercicio img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+/* Información principal */
+
+.informacionEjercicio {
+    grid-area: informacion;
+
+    min-width: 0;
+}
+
+.informacionEjercicio h4 {
+    margin: 0 0 6px;
+
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.informacionEjercicio p {
+    margin: 0;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    overflow-wrap: break-word;
+}
+
+/* Series, repeticiones, duración, descanso */
+
+.datosEjercicio {
+    grid-area: datos;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px 16px;
+
+    min-width: 0;
+}
+
+.datosEjercicio span {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+.datosEjercicio strong {
+    font-weight: 700;
+}
+
+/* ==================================================
+   TABLET / MÓVIL
+   ================================================== */
+
+@media (max-width: 768px) {
+
+    .ejercicioPlan {
+        grid-template-columns: 72px minmax(0, 1fr);
+
+        column-gap: 12px;
+
+        padding: 16px 0;
+    }
+
+    .imagenEjercicio {
+        width: 72px;
+        height: 72px;
+    }
+}
+
+/* Móviles muy pequeños */
+
+@media (max-width: 480px) {
+
+    .ejercicioPlan {
+        grid-template-columns: 64px minmax(0, 1fr);
+
+        column-gap: 10px;
+    }
+
+    .imagenEjercicio {
+        width: 64px;
+        height: 64px;
+    }
+
+    .informacionEjercicio h4 {
+        font-size: 0.95rem;
+    }
+
+    .informacionEjercicio p {
+        font-size: 0.85rem;
+    }
+
+    .datosEjercicio {
+        gap: 6px 12px;
+    }
+
+    .datosEjercicio span {
+        font-size: 0.82rem;
+    }
+}

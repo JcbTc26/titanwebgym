@@ -1522,61 +1522,97 @@ function iniciarPlanificador() {
        HTML DE CADA EJERCICIO
     ====================================================== */
 
-    function crearHTMLEjercicio(ejercicio) {
+   function crearHTMLEjercicio(ejercicio) {
 
-        const datosEjercicio = [];
+    const nombreSeguro =
+        utilidadesPlanificador.escaparHTML(ejercicio.nombre);
 
-        if (ejercicio.series) {
-            datosEjercicio.push(
-                `${ejercicio.series} series`
-            );
-        }
+    const descripcionSegura =
+        utilidadesPlanificador.escaparHTML(ejercicio.descripcion);
 
-        if (ejercicio.repeticiones) {
-            datosEjercicio.push(
-                ejercicio.repeticiones
-            );
-        }
+    const rutaImagen =
+        imagenesEjercicios[ejercicio.nombre];
 
-        if (ejercicio.descanso) {
-            datosEjercicio.push(
-                `Descanso: ${ejercicio.descanso}`
-            );
-        }
+    const imagenHTML = rutaImagen
+        ? `
+            <div class="imagenEjercicio">
+                <img
+                    src="${rutaImagen}"
+                    alt="Ilustración del ejercicio ${nombreSeguro}"
+                    loading="lazy"
+                    decoding="async"
+                    width="320"
+                    height="320"
+                >
+            </div>
+        `
+        : "";
 
-        return `
-            <div class="ejercicioPlan">
+    return `
+        <div class="ejercicioPlan">
 
-                <div class="informacionEjercicio">
+            ${imagenHTML}
 
-                    <h4>
-                        ${utilidadesPlanificador.escaparHTML(ejercicio.nombre)}
-                    </h4>
+            <div class="informacionEjercicio">
+                <h4>${nombreSeguro}</h4>
+                <p>${descripcionSegura}</p>
+            </div>
 
-                    <p>
-                        ${utilidadesPlanificador.escaparHTML(ejercicio.descripcion)}
-                    </p>
+            <div class="datosEjercicio">
 
-                </div>
+                ${
+                    ejercicio.series
+                        ? `
+                            <span>
+                                <strong>Series:</strong>
+                                ${ejercicio.series}
+                            </span>
+                        `
+                        : ""
+                }
 
-                <div class="datosEjercicio">
+                ${
+                    ejercicio.repeticiones
+                        ? `
+                            <span>
+                                <strong>Repeticiones:</strong>
+                                ${ejercicio.repeticiones}
+                            </span>
+                        `
+                        : ""
+                }
 
-                    ${datosEjercicio
-                        .map(
-                            (dato) => `
-                                <span class="datoEjercicio">
-                                    ${utilidadesPlanificador.escaparHTML(dato)}
-                                </span>
-                            `
-                        )
-                        .join("")}
+                ${
+                    ejercicio.duracion
+                        ? `
+                            <span>
+                                <strong>Duración:</strong>
+                                ${utilidadesPlanificador.escaparHTML(
+                                    ejercicio.duracion
+                                )}
+                            </span>
+                        `
+                        : ""
+                }
 
-                </div>
+                ${
+                    ejercicio.descanso
+                        ? `
+                            <span>
+                                <strong>Descanso:</strong>
+                                ${utilidadesPlanificador.escaparHTML(
+                                    ejercicio.descanso
+                                )}
+                            </span>
+                        `
+                        : ""
+                }
 
             </div>
-        `;
 
-    }
+        </div>
+    `;
+}
 
     /* =====================================================
        AVISO ORIENTATIVO
@@ -1710,3 +1746,119 @@ function iniciarPlanificador() {
      */
 
 }
+
+const imagenesEjercicios = {
+    "Sentadilla a una silla":
+        "/img/ejercicios/01-sentadilla-silla.webp",
+
+    "Step-up en escalón bajo":
+        "/img/ejercicios/02-step-up.webp",
+
+    "Bisagra de cadera":
+        "/img/ejercicios/03-bisagra-cadera.webp",
+
+    "Puente de glúteos":
+        "/img/ejercicios/04-puente-gluteos.webp",
+
+    "Flexiones inclinadas":
+        "/img/ejercicios/05-flexiones-inclinadas.webp",
+
+    "Remo isométrico con toalla":
+        "/img/ejercicios/06-remo-toalla.webp",
+
+    "Elevación de brazos en pared":
+        "/img/ejercicios/07-elevacion-brazos-pared.webp",
+
+    "Bird dog":
+        "/img/ejercicios/08-bird-dog.webp",
+
+    "Sentadilla goblet":
+        "/img/ejercicios/09-sentadilla-goblet.webp",
+
+    "Zancada hacia atrás":
+        "/img/ejercicios/10-zancada-atras.webp",
+
+    "Peso muerto rumano con mancuernas":
+        "/img/ejercicios/11-peso-muerto-rumano.webp",
+
+    "Puente de glúteos con carga":
+        "/img/ejercicios/12-puente-gluteos-carga.webp",
+
+    "Press de pecho con mancuernas":
+        "/img/ejercicios/13-press-pecho-mancuernas.webp",
+
+    "Remo con mancuernas":
+        "/img/ejercicios/14-remo-mancuernas.webp",
+
+    "Press de hombros con mancuernas":
+        "/img/ejercicios/15-press-hombros-mancuernas.webp",
+
+    "Dead bug":
+        "/img/ejercicios/16-dead-bug.webp",
+
+    "Sentadilla goblet o multipower":
+        "/img/ejercicios/17-sentadilla-multipower.webp",
+
+    "Prensa de piernas":
+        "/img/ejercicios/18-prensa-piernas.webp",
+
+    "Hip thrust":
+        "/img/ejercicios/19-hip-thrust.webp",
+
+    "Press de pecho en máquina":
+        "/img/ejercicios/20-press-pecho-maquina.webp",
+
+    "Remo sentado en polea":
+        "/img/ejercicios/21-remo-polea.webp",
+
+    "Press de hombros en máquina":
+        "/img/ejercicios/22-press-hombros-maquina.webp",
+
+    "Pallof press":
+        "/img/ejercicios/23-pallof-press.webp",
+
+    "Calentamiento general":
+        "/img/ejercicios/24-calentamiento.webp",
+
+    "Bicicleta, cinta o elíptica":
+        "/img/ejercicios/25-cardio-maquina.webp",
+
+    "Caminata rápida":
+        "/img/ejercicios/26-caminata-rapida.webp",
+
+    "Cardio final en máquina":
+        "/img/ejercicios/27-cardio-final.webp",
+
+    "Marcha rápida":
+        "/img/ejercicios/28-marcha-rapida.webp",
+
+    "Intervalos en bicicleta":
+        "/img/ejercicios/29-intervalos-bicicleta.webp",
+
+    "Intervalos caminando":
+        "/img/ejercicios/30-intervalos-caminando.webp",
+
+    "Movilidad global":
+        "/img/ejercicios/31-movilidad-global.webp",
+
+    "Equilibrio con apoyo":
+        "/img/ejercicios/32-equilibrio-apoyo.webp",
+
+    "Vuelta a la calma":
+        "/img/ejercicios/33-vuelta-calma.webp",
+
+    "Sentarse y levantarse de una silla":
+        "/img/ejercicios/34-sentarse-levantarse.webp",
+
+    "Puente de glúteos sin carga":
+        "/img/ejercicios/35-puente-gluteos-sin-carga.webp",
+
+    "Retracción escapular suave":
+        "/img/ejercicios/36-retraccion-escapular.webp",
+
+    "Bicicleta reclinada suave":
+        "/img/ejercicios/37-bicicleta-reclinada.webp",
+
+    "Marcha suave con apoyo":
+        "/img/ejercicios/38-marcha-apoyo.webp"
+};
