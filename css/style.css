@@ -1428,3 +1428,159 @@
     font-size: 0.9rem;
     line-height: 1.6;
 }
+
+/* =========================================================
+   ESTADO DEL FORMULARIO
+========================================================= */
+
+
+
+.estadoFormulario {
+    width: 100%;
+    max-width: 750px;
+    margin: 24px auto 0;
+    padding: 20px 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    animation: aparecerEstado 0.3s ease;
+}
+
+.estadoFormulario[hidden] {
+    display: none;
+}
+
+.estadoFormulario strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.estadoFormulario span {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+/* ÉXITO */
+
+.estadoFormulario--exito {
+    color: #ffffff;
+
+    background-color: #111111;
+
+    border-left: 5px solid #007bff;
+}
+
+.estadoFormulario--exito strong {
+    color: #007bff;
+}
+
+
+/* ERROR */
+
+.estadoFormulario--error {
+    color: #ffffff;
+
+    background-color: #111111;
+
+    border-left: 5px solid #dc3545;
+}
+
+.estadoFormulario--error strong {
+    color: #ff5a67;
+}
+
+
+/* BOTÓN MIENTRAS ENVÍA */
+
+#botonEnvio:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+/* ANIMACIÓN */
+
+@keyframes aparecerEstado {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+    BOTÓN DE WHATSAPP FLOTANTE
+========================================================= */
+
+.whatsappFlotante {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background-color: #25d366;
+
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+    z-index: 1000;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.whatsappFlotante svg {
+    width: 32px;
+    height: 32px;
+}
+
+.whatsappFlotante:hover {
+    background-color: #1ebe5d;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.whatsappFlotante:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+.whatsappFlotante:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 600px) {
+    .whatsappFlotante {
+        width: 54px;
+        height: 54px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .whatsappFlotante svg {
+        width: 30px;
+        height: 30px;
+    }
+}

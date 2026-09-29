@@ -276,42 +276,110 @@
                 La primera sesión es gratuita y sin compromiso.
             </p>
 
-            <form id="formularioContactanos" action="#" method="post">
+          <form
+    id="formularioContactanos"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+>
+    <!-- Clave pública de Web3Forms -->
+    <input
+        type="hidden"
+        name="access_key"
+        value="73ec6723-cdf5-4c05-a679-2beb7bcf0efe"
+    >
 
-                <section class="formularioSub">
+    <!-- Asunto del correo que recibo -->
+    <input
+        type="hidden"
+        name="subject"
+        value="Nueva solicitud de sesión - Titan Fitness Club"
+    >
 
-                    <label for="mensaje" class="sr-only">
-                        Mensaje
-                    </label>
+    <!-- Nombre que aparecerá como origen del formulario -->
+    <input
+        type="hidden"
+        name="from_name"
+        value="Web Titan Fitness Club"
+    >
 
-                    <textarea placeholder="Cuéntanos cuál es tu objetivo" id="mensaje" name="mensaje" rows="5"
-                        required></textarea>
+    <section class="formularioSub">
 
-                </section>
+        <label for="mensaje" class="sr-only">
+            Objetivo o mensaje
+        </label>
 
-                <section class="formulariosInf">
+        <textarea
+            id="mensaje"
+            name="message"
+            rows="5"
+            maxlength="1000"
+            placeholder="Cuéntanos cuál es tu objetivo"
+            required
+        ></textarea>
 
-                    <label for="correo" class="sr-only">
-                        Correo electrónico
-                    </label>
+    </section>
 
-                    <input type="email" class="emailAddress" id="correo" name="correo" placeholder="Correo electrónico"
-                        autocomplete="email" required>
+    <section class="formulariosInf">
 
-                    <label for="nombreCompleto" class="sr-only">
-                        Nombre completo
-                    </label>
+        <label for="correo" class="sr-only">
+            Correo electrónico
+        </label>
 
-                    <input type="text" class="fullName" id="nombreCompleto" name="nombreCompleto"
-                        placeholder="Nombre completo" autocomplete="name" required>
+        <input
+            type="email"
+            class="emailAddress"
+            id="correo"
+            name="email"
+            placeholder="Correo electrónico"
+            autocomplete="email"
+            maxlength="254"
+            required
+        >
 
-                    <button type="submit" id="botonEnvio" class="botonFormulario">
-                        Solicitar sesión gratuita
-                    </button>
+        <label for="nombreCompleto" class="sr-only">
+            Nombre completo
+        </label>
 
-                </section>
+        <input
+            type="text"
+            class="fullName"
+            id="nombreCompleto"
+            name="name"
+            placeholder="Nombre completo"
+            autocomplete="name"
+            minlength="2"
+            maxlength="80"
+            required
+        >
 
-            </form>
+        <!-- Campo anti-spam invisible para usuarios reales -->
+        <input
+            type="checkbox"
+            name="botcheck"
+            tabindex="-1"
+            autocomplete="off"
+            style="display: none;"
+        >
+
+        <button
+            type="submit"
+            id="botonEnvio"
+            class="botonFormulario"
+        >
+            Solicitar sesión gratuita
+        </button>
+
+    </section>
+
+    </form>
+
+        <div
+            id="estadoFormulario"
+            class="estadoFormulario"
+            role="status"
+            aria-live="polite"
+            hidden
+        ></div>
 
         </section>
 
@@ -441,6 +509,28 @@
 
     </footer>
     <script src="/js/app.js" defer></script>
+
+
+    <!-- Botón flotante de WhatsApp -->
+    <a
+    href="https://wa.me/34626747642?text=Hola%20Titan%20Fitness%2C%20quiero%20informaci%C3%B3n%20sobre%20vuestros%20planes."
+    class="whatsappFlotante"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar con Titan Fitness por WhatsApp"
+>
+    <svg
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+        focusable="false"
+    >
+        <path
+            fill="currentColor"
+            d="M16.04 3C9.39 3 4 8.25 4 14.72c0 2.58.87 4.97 2.34 6.9L4.8 27l5.58-1.46a12.3 12.3 0 0 0 5.66 1.37C22.69 26.91 28 21.66 28 15.19 28 8.72 22.69 3 16.04 3Zm0 21.76a10.1 10.1 0 0 1-5.14-1.4l-.37-.22-3.31.87.89-3.17-.24-.39a9.42 9.42 0 0 1-1.55-5.2c0-5.26 4.36-9.55 9.72-9.55 5.35 0 9.71 4.29 9.71 9.55 0 5.25-4.36 9.51-9.71 9.51Zm5.33-7.15c-.29-.14-1.73-.84-2-.93-.27-.1-.47-.14-.67.14-.2.29-.77.94-.95 1.13-.17.19-.35.21-.64.07-.29-.14-1.23-.44-2.34-1.41a8.8 8.8 0 0 1-1.62-1.98c-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.08-.14-.67-1.58-.92-2.16-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.36-.27.29-1.04 1-1.04 2.44 0 1.43 1.07 2.82 1.21 3.01.15.19 2.1 3.14 5.09 4.4.71.3 1.27.48 1.7.61.72.22 1.37.19 1.88.12.58-.08 1.73-.7 1.98-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.19-.56-.33Z"
+        />
+    </svg>
+</a>
+    
 
 </body>
 
